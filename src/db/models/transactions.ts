@@ -22,9 +22,8 @@ const transactionSchema = new Schema(
   }
 );
 
-// Создаем и экспортируем модель
 export const TransactionsCollection = model(
   "transaction",
   transactionSchema,
-  "transactions"
+  "transaction"
 );

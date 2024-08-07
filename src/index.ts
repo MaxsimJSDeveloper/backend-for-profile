@@ -1,11 +1,12 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 
 import { initMongoDB } from "./db/initMongoDB";
-import router from "./routes/profile";
 import { notFoundHandler } from "./middlewares/notFoundHendler";
 import { errorHandler } from "./middlewares/errorHendler";
 import { env } from "./utils/env";
+
+import router from "./routes/profile";
 
 const app = express();
 const PORT: Number = Number(env("PORT", "3000"));

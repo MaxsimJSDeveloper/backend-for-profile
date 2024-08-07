@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "echo Starting server... && node dist/index.js || echo 'Server exited with an error'",
     "dev": "nodemon --exec ts-node src/index.ts",
-    "build": "tsc",
+    "build": "echo Building... && tsc && echo Build completed!",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --write ."
   },

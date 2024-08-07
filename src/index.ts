@@ -12,19 +12,34 @@ const app = express();
 const PORT: Number = Number(env("PORT", "3000"));
 
 const startServer = async () => {
-  await initMongoDB();
+  try {
+    await initMongoDB();
+    console.log("MongoDB connection established successfully");
 
-  app.use(router);
+    app.use(cors());
+    app.use(express.json());
+    app.use(router);
 
-  app.use(cors());
+    app.listen(PORT, () => {
+      console.log(`Server started on port ${PORT}`);
+    });
 
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-  });
-
-  app.use("*", notFoundHandler);
-
-  app.use(errorHandler);
+    app.use("*", notFoundHandler);
+    app.use(errorHandler);
+  } catch (error) {
+    console.error("Error starting server:", error);
+    process.exit(1); // Остановите процесс, если произошла ошибка при запуске сервера
+  }
 };
 
 startServer();
+
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught Exception:", err);
+  process.exit(1); // Опционально, можно завершить процесс
+});
+
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  process.exit(1); // Опционально, можно завершить процесс
+});

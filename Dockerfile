@@ -10,4 +10,5 @@ COPY . .
 
 RUN npm run build
 
+# Убедитесь, что путь к `index.js` корректен
 CMD ["node", "dist/index.js"]

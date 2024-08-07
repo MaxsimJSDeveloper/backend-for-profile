@@ -9,7 +9,7 @@ import { ctrlWrapper } from "../middlewares/tryCatch";
 
 const router = Router();
 
-router.get("/user", ctrlWrapper(usersController));
+router.get("/users", ctrlWrapper(usersController));
 
 router.get("/transactions", ctrlWrapper(transactionsController));
 

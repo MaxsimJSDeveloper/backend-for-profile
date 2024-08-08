@@ -24,7 +24,6 @@ const PORT = Number((0, env_1.env)("PORT", "3000"));
 const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, initMongoDB_1.initMongoDB)();
-        console.log("MongoDB connection established successfully");
         app.use((0, cors_1.default)());
         app.use(express_1.default.json());
         app.use(profile_1.default);

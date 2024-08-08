@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: backend-for-profile
-    env: docker
-    region: oregon
-    plan: free
-    buildCommand: "docker build -t backend-for-profile ."
-    startCommand: "docker run -p 3000:3000 backend-for-profile"
